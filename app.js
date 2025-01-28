@@ -4,30 +4,15 @@ let nombresAmigos=[];
 let nombre="";
 let mensajeError = "Por favor, inserte un nombre";
 let lista = document.getElementById("listaAmigos");
-//Parte 2 Funcion agregar amigos
+
+
+setFocusById("amigo");
+
+addEventEnter("amigo");
+
+
 function agregarAmigo(){
-//     //Forma 1
-//     //Capturar el valor
-//     nombre = document.getElementById("amigo").value;
-//     //Validad la entrada
-//     if(nombre===""){
-//         alert("Por favor, inserte un nombre");
-//     }
-//     //Actualizar array
-//     nombresAmigos.push(nombre);
-//     //limpiar entrada
-//     document.querySelector("#amigo").value="";
 
-
-// //forma 2
-//     if(document.getElementById("amigo").value===""){
-//         alert("Por favor, inserte un nombre");
-//     }else{
-//         nombresAmigos.push(document.getElementById("amigo").value);
-//         document.getElementById("amigo").value=="";
-//     }
-
-//forma 3
     if(esCampoVacio("amigo")){
         alert(mensajeError);
         setFocusById("amigo");
@@ -36,17 +21,36 @@ function agregarAmigo(){
         nombresAmigos.push(nombre);
         limpiarCampo("amigo");
         setFocusById("amigo");
-        updateList(nombresAmigos);
+        actualizarLista(nombresAmigos);
     }
 }
-function updateList(nombresAmigos){
+
+function actualizarLista(nombresAmigos){
    
     lista.innerHTML="";
-    //recorrer lista
     for(let i = 0; i < nombresAmigos.length;i++){
-        // lista.innerHTML=nombresAmigos[i]+"<br>";
+        lista.innerHTML += `<li>${nombresAmigos[i]}</li>`;
     }
 }
+
+function sortearAmigo(){
+    let numeroSorteado = getRandomInt(nombresAmigos.length);
+    let nombreSorteado = nombresAmigos[numeroSorteado];
+    document.getElementById("resultado").innerHTML=nombreSorteado;
+}
+
+function getRandomInt(max){
+    return Math.floor(Math.random()*max);
+}
+
+function addEventEnter(id){
+    getElementById(id).addEventListener("keydown", function(event){if(event.key==="Enter"){agregarAmigo();}})
+}
+
+function getElementById(id){
+    return document.getElementById(id);
+}
+
 function getValueById(id){
     return document.getElementById(id).value;
 }
