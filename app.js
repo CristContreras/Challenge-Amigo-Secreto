@@ -3,7 +3,7 @@
 let nombresAmigos=[];
 let nombre="";
 let mensajeError = "Por favor, inserte un nombre";
-let lista = document.getElementById("listaAmigos");
+let lista = getElementById("listaAmigos");
 
 
 setFocusById("amigo");
