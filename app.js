@@ -33,8 +33,8 @@ function actualizarLista(nombresAmigos){
 
 function sortearAmigo(){
     let numeroSorteado = getRandomInt(nombresAmigos.length);
-    let nombreSorteado = nombresAmigos[numeroSorteado];
-    document.getElementById("resultado").innerHTML=nombreSorteado;
+    let nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
+    getElementById("resultado").innerHTML=`El amigo secreto es ${nombreSorteado}`;
 }
 
 function getRandomInt(max){
