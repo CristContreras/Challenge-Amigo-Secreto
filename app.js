@@ -3,7 +3,7 @@
 let nombresAmigos=[];
 let nombre="";
 let mensajeError = "Por favor, inserte un nombre";
-
+let lista = document.getElementById("listaAmigos");
 //Parte 2 Funcion agregar amigos
 function agregarAmigo(){
 //     //Forma 1
@@ -36,9 +36,17 @@ function agregarAmigo(){
         nombresAmigos.push(nombre);
         limpiarCampo("amigo");
         setFocusById("amigo");
+        updateList(nombresAmigos);
     }
 }
-
+function updateList(nombresAmigos){
+   
+    lista.innerHTML="";
+    //recorrer lista
+    for(let i = 0; i < nombresAmigos.length;i++){
+        // lista.innerHTML=nombresAmigos[i]+"<br>";
+    }
+}
 function getValueById(id){
     return document.getElementById(id).value;
 }
