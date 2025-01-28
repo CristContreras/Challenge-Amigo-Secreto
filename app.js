@@ -2,7 +2,8 @@ let nombresAmigos=[];
 let nombre="";
 let mensajeError = "Por favor, inserte un nombre";
 let lista = getElementById("listaAmigos");
-
+let numeroSorteado=0;
+let nombreSorteado="";
 
 setFocusById("amigo");
 
@@ -32,8 +33,8 @@ function actualizarLista(nombresAmigos){
 }
 
 function sortearAmigo(){
-    let numeroSorteado = getRandomInt(nombresAmigos.length);
-    let nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
+    numeroSorteado = getRandomInt(nombresAmigos.length);
+    nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
     getElementById("resultado").innerHTML=`El amigo secreto es ${nombreSorteado}`;
 }
 
