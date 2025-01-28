@@ -6,4 +6,17 @@ Challenge Amigo Secreto es una aplicación web que permite ingresar los nombres 
 
 ## Instalación
 
-No necesitas instalación. Simplemente visita la página https://cristcontreras.github.io/Challenge-Amigo-Secreto/
+No necesitas instalación. Simplemente visita la página: https://cristcontreras.github.io/Challenge-Amigo-Secreto/
+
+## Funcionalidades
+
+- **Agregar nombres**
+- **Validar entradas**
+- **Visualizar lista**
+- **Sorteo aleatorio**
+
+## Tecnologías
+
+- **HTML**: Para la estructura de la página.
+- **CSS**: Para el diseño y estilo.
+- **Javascript**: Lógica de juego y la interacción con el usuario.
