@@ -25,3 +25,5 @@ No necesitas instalación. Simplemente visita la página: https://cristcontreras
 ## Imagenes del proyecto
 
 ![Imagen 1](https://github.com/CristContreras/Challenge-Amigo-Secreto/blob/main/imagenes/img1.PNG)
+![Imagen 2](https://github.com/CristContreras/Challenge-Amigo-Secreto/blob/main/imagenes/img2.PNG)
+![Imagen 3](https://github.com/CristContreras/Challenge-Amigo-Secreto/blob/main/imagenes/img3.PNG)
