@@ -4,22 +4,23 @@ let mensajeError = "Por favor, inserte un nombre";
 let lista = getElementById("listaAmigos");
 let numeroSorteado=0;
 let nombreSorteado="";
+let campoNombre = "amigo";
 
-setFocusById("amigo");
+setFocusById(campoNombre);
 
-addEventEnter("amigo");
+addEventEnter(campoNombre);
 
 
 function agregarAmigo(){
 
-    if(esCampoVacio("amigo")){
+    if(esCampoVacio(campoNombre)){
         alert(mensajeError);
-        setFocusById("amigo");
+        setFocusById(campoNombre);
     }else{
-        nombre = getValueById("amigo");
+        nombre = getValueById(campoNombre);
         nombresAmigos.push(nombre);
-        limpiarCampo("amigo");
-        setFocusById("amigo");
+        limpiarCampo(campoNombre);
+        setFocusById(campoNombre);
         actualizarLista(nombresAmigos);
     }
 }
@@ -33,9 +34,14 @@ function actualizarLista(nombresAmigos){
 }
 
 function sortearAmigo(){
-    numeroSorteado = getRandomInt(nombresAmigos.length);
-    nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
-    getElementById("resultado").innerHTML=`El amigo secreto es ${nombreSorteado}`;
+    if(nombresAmigos.length>1){
+        numeroSorteado = getRandomInt(nombresAmigos.length);
+        nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
+        getElementById("resultado").innerHTML=`El amigo secreto es ${nombreSorteado}`;
+    }else{
+        alert("Debe ingresar al menos 2 nombres.")
+    }
+    
 }
 
 function getRandomInt(max){
