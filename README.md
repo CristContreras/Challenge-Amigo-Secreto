@@ -21,3 +21,6 @@ No necesitas instalación. Simplemente visita la página: https://cristcontreras
 - **HTML**: Para la estructura de la página.
 - **CSS**: Para el diseño y estilo.
 - **Javascript**: Lógica de juego y la interacción con el usuario.
+
+## Imagenes del proyecto
+
