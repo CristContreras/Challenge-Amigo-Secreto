@@ -1,76 +1,94 @@
-let nombresAmigos=[];
-let nombre="";
-let mensajeError = "Por favor, inserte un nombre";
-let lista = getElementById("listaAmigos");
-let numeroSorteado=0;
-let nombreSorteado="";
-let campoNombre = "amigo";
+let nombresAmigos = [];
+let nombre = "";
+let listaElement = getElementById("listaAmigos");
+let resultadoElement = getElementById("resultado");
+let numeroSorteado = 0;
+let nombreSorteado = "";
+const campoNombre = "amigo";
 
 setFocusById(campoNombre);
 
-addEventEnter(campoNombre);
 
-
-function agregarAmigo(){
-
-    if(esCampoVacio(campoNombre)){
-        alert(mensajeError);
-        setFocusById(campoNombre);
-    }else{
-        nombre = getValueById(campoNombre);
+function agregarAmigo() {
+    nombre=getValueById(campoNombre);
+    if(esNombreValido(nombre)){
         nombresAmigos.push(nombre);
         limpiarCampo(campoNombre);
-        setFocusById(campoNombre);
         actualizarLista(nombresAmigos);
     }
 }
-
-function actualizarLista(nombresAmigos){
-   
-    lista.innerHTML="";
-    for(let i = 0; i < nombresAmigos.length;i++){
-        lista.innerHTML += `<li>${nombresAmigos[i]}</li>`;
-    }
+function reiniciarTodo(){
+    limpiarCampo(campoNombre);
+    nombresAmigos.splice(0, nombresAmigos.length);
+    listaElement.innerHTML = "";
+    resultadoElement.innerHTML="";
 }
 
-function sortearAmigo(){
-    if(nombresAmigos.length>1){
-        numeroSorteado = getRandomInt(nombresAmigos.length);
-        nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
-        getElementById("resultado").innerHTML=`El amigo secreto es ${nombreSorteado}`;
-    }else{
-        alert("Debe ingresar al menos 2 nombres.")
-    }
+
+function contieneNumeros(nombre){
+    return /\d/.test(nombre);
+}
+function esNombreVacio(nombre){
+    return nombre.trim() === "";
+}
+function contieneCaracteresEspeciales(nombre){
+    return /[^A-Za-z\s]/.test(nombre);
+}
+function contieneLetras(nombre){
+    return /^[A-Za-z\s]+$/.test(nombre);
+ }
+function esNombreValido(valorObtenido) {
+
+    let mensajeError = contieneNumeros(nombre) ? "Error el nombre no debe contener números." : contieneCaracteresEspeciales(nombre) ? "Error debe contener solo letras." : esNombreVacio(nombre) ? "Error el nombre no puede ser vacío" : null;
+    return contieneLetras(nombre) ? true : (alert(mensajeError), limpiarCampo(campoNombre), false);
     
 }
 
-function getRandomInt(max){
-    return Math.floor(Math.random()*max);
+function actualizarLista(nombresAmigos) {
+
+    listaElement.innerHTML = "";
+    for (let i = 0; i < nombresAmigos.length; i++) {
+        listaElement.innerHTML += `<li>${nombresAmigos[i]}</li>`;
+    }
 }
 
-function addEventEnter(id){
-    getElementById(id).addEventListener("keydown", function(event){if(event.key==="Enter"){agregarAmigo();}})
+function sortearAmigo() {
+    if (nombresAmigos.length > 1) {
+        numeroSorteado = getRandomInt(nombresAmigos.length);
+        nombreSorteado = (nombresAmigos[numeroSorteado]).toUpperCase();
+        resultadoElement.innerHTML = `El amigo secreto es ${nombreSorteado}`;
+    } else {
+        alert("Debe ingresar al menos 2 nombres.")
+    }
+
 }
 
-function getElementById(id){
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+//Permite utilizar la tecla Enter para agregar un nombre.
+document.getElementById(campoNombre).addEventListener("keydown", function (event) { if (event.key === "Enter") { agregarAmigo(); } })
+
+
+function getElementById(id) {
     return document.getElementById(id);
 }
 
-function getValueById(id){
-    return document.getElementById(id).value;
+function getValueById(id) {
+    return getElementById(id).value;
 }
 
-function setValueById(id, value){
-    document.getElementById(id).value=value;
+function setValueById(id, value) {
+    getElementById(id).value = value;
 }
 
-function setFocusById(id){
-    document.getElementById(id).focus();
+function setFocusById(id) {
+    getElementById(id).focus();
 }
 
-function limpiarCampo(id){
+function limpiarCampo(id) {
     setValueById(id, "");
+    setFocusById(id);
 }
-function esCampoVacio(id){
-    return getValueById(id)==="";
-}
+
