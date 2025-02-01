@@ -54,9 +54,29 @@ function reiniciarTodo() {
 
 
 function esNombreValido(nombre) {
+    
+    const mostrarMsjErrorNombre = (mensaje, campo) => {
+        alert(mensaje);
+        limpiarCampo(campo);
+        return false;
+    }
 
-    let mensajeError = contieneNumeros(nombre) ? "Error el nombre no debe contener números." : contieneCaracteresEspeciales(nombre) ? "Error debe contener solo letras." : esNombreVacio(nombre) ? "Error el nombre no puede ser vacío" : null;
-    return contieneLetras(nombre) ? true : (alert(mensajeError), limpiarCampo(campoNombre), false);
+    if(contieneNumeros(nombre)){
+        mensajeError = "Error el nombre no debe contener números.";
+        return mostrarMsjErrorNombre(mensajeError, campoNombre);
+    }else if(contieneCaracteresEspeciales(nombre)){
+        mensajeError = "Error debe contener solo letras."
+        return mostrarMsjErrorNombre(mensajeError, campoNombre);
+    }else if(esNombreVacio(nombre)){
+        mensajeError = "Error el nombre no puede ser vacío."
+        return mostrarMsjErrorNombre(mensajeError, campoNombre);
+    }
+    
+    return true;
+    
+    // let mensajeError = contieneNumeros(nombre) ? "Error el nombre no debe contener números." : contieneCaracteresEspeciales(nombre) ? "Error debe contener solo letras." : esNombreVacio(nombre) ? "Error el nombre no puede ser vacío" : null;
+    // return contieneLetras(nombre) ? true : (alert(mensajeError), limpiarCampo(campoNombre), false);
+
 }
 
 function actualizarLista(nombresAmigos) {
